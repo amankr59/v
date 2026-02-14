@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A Special Valentine Surprise - Humari Kahaani">
+  <title>Humari Kahaani – Just For You 💕</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Quicksand:wght@400;500;600&family=Dancing+Script:wght@500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Loader: heart animation before site opens -->
+  <div class="loader" id="loader" aria-hidden="true">
+    <div class="loader-heart">❤</div>
+    <p class="loader-text">Loading your surprise...</p>
+  </div>
+
+  <div class="hearts-container" id="heartsContainer" aria-hidden="true"></div>
+
+  <!-- Confetti layer (when surprise is revealed) -->
+  <div class="confetti-layer" id="confettiLayer" aria-hidden="true"></div>
+
+  <!-- Music: play/pause + volume -->
+  <div class="music-controls">
+    <button type="button" class="music-btn" id="musicBtn" aria-label="Play or pause background music" title="Play/Pause music">
+      <span class="music-icon music-play" aria-hidden="true">♪</span>
+      <span class="music-icon music-pause" aria-hidden="true">❚❚</span>
+    </button>
+    <input type="range" class="music-volume" id="musicVolume" min="0" max="100" value="70" aria-label="Volume">
+  </div>
+  <audio id="bgMusic" loop preload="auto" aria-label="Background romantic music" muted>
+    <source src="audio/romantic.mp3" type="audio/mpeg">
+    <source src="audio/romantic.ogg" type="audio/ogg">
+  </audio>
+
+  <!-- Hero: existing surprise experience (unchanged behavior) -->
+  <section class="hero" id="hero">
+    <main class="container">
+      <section class="screen home-screen" id="homeScreen">
+        <h1 class="heading">A Special Valentine Surprise 💖</h1>
+        <p class="subheading">Something sweet is waiting for you</p>
+        <button type="button" class="open-surprise-btn" id="openSurpriseBtn">
+          <span class="btn-text">Open Surprise 💌</span>
+        </button>
+        <button type="button" class="open-surprise-btn explore-story-btn" id="exploreStoryBtn">
+          <span class="btn-text">Explore Your Love Story ↓</span>
+        </button>
+      </section>
+
+      <section class="screen message-screen hidden" id="messageScreen" aria-live="polite">
+        <div class="message-card surprise-reveal-card" id="surpriseRevealCard">
+          <div class="surprise-reveal-glow"></div>
+          <p class="surprise-message" id="surpriseMessage"></p>
+          <button type="button" class="open-again-btn" id="openAgainBtn">Open Another 💌</button>
+          <button type="button" class="open-surprise-btn explore-story-btn" id="exploreStoryBtn2">Continue to our story ↓</button>
+        </div>
+      </section>
+
+      <footer class="final-message" id="finalMessage">
+        <p>Happy Valentine's Day 💕</p>
+      </footer>
+    </main>
+  </section>
+
+  <!-- Multi-section scroll experience (full scroll, cinematic) -->
+  <div class="story-sections" id="storySections">
+    <!-- Section 1: Interactive Love Story Intro (Cinematic) -->
+    <section class="story-section section-reveal section-parallax" id="love-story" data-section="love-story">
+      <div class="section-bg section-petals" id="petalsBg" aria-hidden="true"></div>
+      <div class="section-bg section-hearts"></div>
+      <div class="section-content glass-card story-card" data-parallax="0.15">
+        <h2 class="section-title">Humari Kahaani — School Se Saath ❤️</h2>
+        <div class="story-text">
+          <p class="reveal-line" data-line-heart>Pehli baar hum mile class 9 mein. Tab pata bhi nahi tha ki ek din tum meri zindagi ki sabse khoobsurat wajah ban jaogi.</p>
+          <p class="reveal-line" data-line-heart>Class 9 khatam hone ko aayi… tab dil ne pehli dhadkan di. Tumhe dekh kar lagta tha jaise sab theek ho jayega.</p>
+          <p class="reveal-line" data-line-heart>Class 10 mein hum aur bhi kareeb aaye. Baatein zyada, hasi zyada, aur woh feeling jo shabd nahi bol paate.</p>
+          <p class="reveal-line" data-line-heart>Maine apni copy mein tumhare liye gaane likhne shuru kiye. Har line tumhare baare mein thi – tumhari aankhein, tumhari muskurahat.</p>
+          <p class="reveal-line" data-line-heart>Inhi gaano ke through hum aur bhi kareeb aaye. Tumne suna, tumne samjha, aur dil ne kaha – yehi hai.</p>
+          <p class="reveal-line" data-line-heart>Phir woh din aaya… <span class="typing-date" id="typingDate" data-typing="25 August 2018">25 August 2018</span>. Maine tumse apna dil khol ke rakh diya. Propose kiya. Haan kehna tumhari marzi thi, par kehna mera jazba tha.</p>
+          <p class="reveal-line" data-line-heart>Is beech bahut problems aayi, kabhi fights bhi hui. Par hum dono ne kabhi haath nahi choda. Har mushkil ne hume strong banaya.</p>
+          <p class="reveal-line" data-line-heart>Aaj bhi hum sath hain. Saat saal ho gaye – saat khoobsurat saal. Har din tumhare sath ek tohfa hai.</p>
+          <p class="reveal-line" data-line-heart>Yeh kahaani abhi khatam nahi hui. Yeh sirf shuruat hai. School se forever tak – tumhare sath.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 2: Rose Day 🌹 -->
+    <section class="story-section section-reveal" id="rose-day" data-section="rose-day">
+      <div class="section-bg section-rose-particles">
+        <span class="rose-particle" style="left: 15%; top: 20%;"></span>
+        <span class="rose-particle" style="right: 20%; top: 30%; left: auto;"></span>
+        <span class="rose-particle" style="left: 25%; bottom: 25%; top: auto;"></span>
+        <span class="rose-particle" style="right: 15%; bottom: 30%; top: auto;"></span>
+        <span class="rose-particle" style="left: 50%; top: 15%;"></span>
+      </div>
+      <div class="section-bg section-petals-fall" id="rosePetals" aria-hidden="true"></div>
+      <div class="couple-scene rose-scene">
+        <svg class="scene-svg scene-rose" viewBox="0 0 280 140" aria-hidden="true">
+          <!-- Girl silhouette (right side, receiving) -->
+          <g class="silhouette-girl">
+            <ellipse cx="220" cy="95" rx="28" ry="38" fill="var(--silhouette-fill)"/>
+            <circle cx="220" cy="48" r="22" fill="var(--silhouette-fill)"/>
+          </g>
+          <!-- Boy arm + hand extending with rose toward girl -->
+          <g class="boy-arm-rose" id="boyArmRose">
+            <path class="arm-sleeve" d="M 45 75 Q 55 70 75 68 L 95 65 L 100 62 L 98 72 L 78 78 Z" fill="var(--silhouette-fill)"/>
+            <g class="rose-flower">
+              <ellipse cx="105" cy="58" rx="8" ry="10" fill="#c44569"/>
+              <ellipse cx="102" cy="52" rx="5" ry="7" fill="#d45678"/>
+              <ellipse cx="108" cy="54" rx="5" ry="6" fill="#b83a5c"/>
+              <circle cx="105" cy="56" r="3" fill="#8b2942"/>
+              <path d="M 105 68 L 108 95" stroke="#2d5c2d" stroke-width="2.5" fill="none"/>
+            </g>
+          </g>
+        </svg>
+      </div>
+      <div class="section-content glass-card">
+        <h2 class="section-title">Rose Day 🌹</h2>
+        <p class="section-message">Ye ek gulab nahi, yeh mera woh ehsaas hai jo main shabdon mein nahi keh pata. Tumhare liye har din Rose Day hai – har din tum mere liye khilte ho. Is din ke liye bas itna kehna hai: tum jaho hamesha khush, tumhari khushboo mere dil tak aati rahe. Happy Rose Day, meri jaan. 🌹💕</p>
+      </div>
+    </section>
+
+    <!-- Section 3: Propose Day 💍 -->
+    <section class="story-section section-reveal section-propose-zoom" id="propose-day" data-section="propose-day">
+      <div class="section-bg section-sparkles"></div>
+      <div class="section-bg section-heart-glow" aria-hidden="true"></div>
+      <div class="couple-scene propose-scene">
+        <svg class="scene-svg scene-propose" viewBox="0 0 260 160" aria-hidden="true">
+          <!-- Girl silhouette (right) -->
+          <g class="silhouette-girl">
+            <ellipse cx="195" cy="100" rx="26" ry="36" fill="var(--silhouette-fill)"/>
+            <circle cx="195" cy="58" r="20" fill="var(--silhouette-fill)"/>
+          </g>
+          <!-- Boy kneeling, one arm extended with ring -->
+          <g class="boy-kneel" id="boyKneel">
+            <path class="kneel-body" d="M 75 155 L 75 95 Q 72 75 85 68 L 95 65 L 95 155 Z" fill="var(--silhouette-fill)"/>
+            <circle class="boy-head" cx="85" cy="48" r="18" fill="var(--silhouette-fill)"/>
+            <g class="arm-ring">
+              <path d="M 95 65 L 125 55 L 130 52" stroke="var(--silhouette-fill)" stroke-width="10" stroke-linecap="round" fill="none"/>
+              <circle class="ring-circle" cx="132" cy="50" r="8" fill="none" stroke="var(--ring-gold)" stroke-width="2.5"/>
+              <circle class="ring-glow" cx="132" cy="50" r="10" fill="none" stroke="rgba(255,215,0,0.6)" stroke-width="1"/>
+            </g>
+          </g>
+        </svg>
+      </div>
+      <div class="section-content glass-card">
+        <h2 class="section-title">Propose Day 💍</h2>
+        <p class="section-message">Aaj phir se kehna chahta hoon – tum mere sath rehna chahti ho? Na sirf aaj, balki hamesha. Shaadi karke ek ghar banayenge, ek zindagi. Budhape tak saath chalna hai, har musibat mein haath pakadna hai. Yeh ring sirf symbol hai – asli iraada dil ka hai. Meri zindagi, meri biwi banno. 💍❤️</p>
+      </div>
+    </section>
+
+    <!-- Section 4: Chocolate Day 🍫 -->
+    <section class="story-section section-reveal" id="chocolate-day" data-section="chocolate-day">
+      <div class="section-bg section-hearts"></div>
+      <div class="couple-scene chocolate-scene">
+        <svg class="scene-svg scene-chocolate" viewBox="0 0 280 140" aria-hidden="true">
+          <g class="silhouette-girl">
+            <ellipse cx="220" cy="92" rx="26" ry="36" fill="var(--silhouette-fill)"/>
+            <circle cx="220" cy="50" r="20" fill="var(--silhouette-fill)"/>
+          </g>
+          <g class="boy-arm-chocolate" id="boyArmChocolate">
+            <path class="arm-sleeve" d="M 50 72 Q 70 68 95 65 L 115 62 L 112 75 L 88 80 Z" fill="var(--silhouette-fill)"/>
+            <g class="chocolate-wrap-group">
+              <rect class="chocolate-wrapper" x="108" y="55" width="28" height="22" rx="3" fill="rgba(255,240,230,0.9)" stroke="#ccc"/>
+              <rect class="chocolate-piece-svg" x="110" y="58" width="24" height="16" rx="2" fill="#5c4033"/>
+              <rect class="chocolate-shine" x="112" y="60" width="8" height="5" rx="1" fill="rgba(255,255,255,0.4)"/>
+            </g>
+          </g>
+        </svg>
+      </div>
+      <div class="section-content glass-card">
+        <h2 class="section-title">Chocolate Day 🍫</h2>
+        <p class="section-message">Jaise chocolate meethi hoti hai, waise hi tumhari har baat meethi lagti hai. Aaj yeh piece tumhare liye – tum khao, main dekhta rahoon. Tumhari smile se zyada meetha kuch nahi. Happy Chocolate Day, sweetu! 🍫💕</p>
+      </div>
+    </section>
+
+    <!-- Section 5: Teddy Day 🧸 -->
+    <section class="story-section section-reveal" id="teddy-day" data-section="teddy-day">
+      <div class="section-bg section-hearts"></div>
+      <div class="section-bg section-teddy-hearts" id="teddyHearts" aria-hidden="true"></div>
+      <div class="couple-scene teddy-scene">
+        <svg class="scene-svg scene-teddy" viewBox="0 0 280 140" aria-hidden="true">
+          <g class="silhouette-girl">
+            <ellipse cx="215" cy="94" rx="28" ry="38" fill="var(--silhouette-fill)"/>
+            <circle cx="215" cy="50" r="22" fill="var(--silhouette-fill)"/>
+          </g>
+          <g class="boy-arm-teddy" id="boyArmTeddy">
+            <path class="arm-sleeve" d="M 48 78 Q 68 72 98 68 L 125 64 L 128 78 L 100 84 Z" fill="var(--silhouette-fill)"/>
+            <g class="teddy-bear">
+              <ellipse cx="132" cy="88" rx="22" ry="26" fill="#8B4513"/>
+              <circle cx="125" cy="68" r="14" fill="#8B4513"/>
+              <circle cx="142" cy="66" r="12" fill="#8B4513"/>
+              <circle cx="120" cy="65" r="4" fill="#8B4513"/>
+              <circle cx="138" cy="64" r="4" fill="#8B4513"/>
+            </g>
+          </g>
+        </svg>
+      </div>
+      <div class="section-content glass-card">
+        <h2 class="section-title">Teddy Day 🧸</h2>
+        <p class="section-message">Ye teddy tumhare liye – jab bhi main door ho, ye tumhara sath dega. Par yaad rakhna, main hamesha tumse zyada close rehna chahta hoon. Tumhe kabhi darna nahi, kabhi akela feel nahi karna. Meri taraf se yeh chhota sa dost – hamesha tumhare saath. Happy Teddy Day, baby. 🧸❤️</p>
+      </div>
+    </section>
+
+    <!-- Section 6: Promise Day (premium) -->
+    <section class="story-section section-reveal section-promise" id="promise-day" data-section="promise-day">
+      <div class="section-bg section-shimmer"></div>
+      <div class="section-bg section-gold-particles"></div>
+      <div class="couple-scene promise-scene">
+        <svg class="scene-svg scene-promise" viewBox="0 0 280 120" aria-hidden="true">
+          <g class="hands-hold">
+            <path class="hand-boy" d="M 75 75 L 95 65 L 115 70 L 120 85 L 105 95 L 85 90 Z" fill="var(--silhouette-fill)"/>
+            <path class="hand-girl" d="M 205 75 L 185 65 L 165 70 L 160 85 L 175 95 L 195 90 Z" fill="var(--silhouette-fill)"/>
+            <path class="hand-connect" d="M 120 80 Q 140 75 160 80" stroke="var(--silhouette-fill)" stroke-width="6" fill="none" stroke-linecap="round"/>
+          </g>
+        </svg>
+      </div>
+      <div class="section-content glass-card promise-card">
+        <h2 class="section-title">Promise Day 🤞❤️</h2>
+        <p class="section-intro">Yeh meri zameen se uthti hui kasmein hain – tumhare liye.</p>
+        <ul class="promise-list">
+          <li class="reveal-line">Main <strong>hamesha tumhare sath</strong> rahunga – kabhi door nahi jaunga dil se.</li>
+          <li class="reveal-line">Main tumse <strong>shaadi karunga</strong> – ek din zaroor, tumhe apni biwi bana kar rahunga.</li>
+          <li class="reveal-line">Har situation mein main tumhara <strong>support</strong> rahunga – chahe andhera ho ya ujala.</li>
+          <li class="reveal-line">Main kabhi tumhara <strong>haath nahi chodunga</strong> – literally ya emotionally.</li>
+          <li class="reveal-line">Main hamesha tumhe <strong>respect</strong> dunga – tumhari soch, tumhari marzi.</li>
+          <li class="reveal-line">Main tumhe <strong>hamesha khush</strong> rakhne ki koshish karunga.</li>
+          <li class="reveal-line">Har problem mein main tumhara <strong>shield</strong> banna chahta hoon.</li>
+          <li class="reveal-line">Main kabhi tumhe <strong>akela feel</strong> nahi hone dunga.</li>
+          <li class="reveal-line">Tumhari har <strong>smile ki zimmedari</strong> main lena chahta hoon.</li>
+          <li class="reveal-line">Tum jab bhi bolo, main <strong>sununga</strong> – bina judge kiye.</li>
+          <li class="reveal-line">Tumhari <strong>dreams</strong> ko main apna bana kar unhe poora karne mein sath dunga.</li>
+          <li class="reveal-line">Kabhi bhi tumhe <strong>ignore</strong> nahi karunga – busy ho kar bhi tum pehli rahungi.</li>
+          <li class="reveal-line">Tumhari <strong>safety</strong> aur peace mere liye sabse upar rahegi.</li>
+          <li class="reveal-line">Jab tum roogi, main <strong>sambhalunga</strong> – hamesha.</li>
+          <li class="reveal-line">Main tumhare liye <strong>better insaan</strong> banne ki koshish karta rahunga.</li>
+          <li class="reveal-line">Tumhe kabhi <strong>doubt</strong> mein nahi chhodunga – trust hamesha.</li>
+          <li class="reveal-line">Tumhari family ko bhi <strong>apna</strong> samjhunga.</li>
+          <li class="reveal-line">Har Valentine, har din – tumhe <strong>yaad</strong> dilaunga ki tum kitni special ho.</li>
+          <li class="reveal-line">Jab tak saans hai, tumhare liye <strong>dua</strong> karta rahunga.</li>
+          <li class="reveal-line">Yeh saari kasmein sirf <strong>tumhare liye</strong> – aur kisi ke liye nahi. 🤞❤️</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Section 7: Hug Day -->
+    <section class="story-section section-reveal" id="hug-day" data-section="hug-day">
+      <div class="section-bg section-soft-blur"></div>
+      <div class="couple-scene hug-scene">
+        <svg class="scene-svg scene-hug" viewBox="0 0 280 140" aria-hidden="true">
+          <g class="hug-couple">
+            <ellipse class="body-boy" cx="95" cy="100" rx="28" ry="38" fill="var(--silhouette-fill)"/>
+            <circle class="head-boy" cx="95" cy="52" r="22" fill="var(--silhouette-fill)"/>
+            <ellipse class="body-girl" cx="185" cy="100" rx="28" ry="38" fill="var(--silhouette-fill)"/>
+            <circle class="head-girl" cx="185" cy="52" r="22" fill="var(--silhouette-fill)"/>
+            <path class="arms-hug" d="M 70 85 Q 140 70 210 85" stroke="var(--silhouette-fill)" stroke-width="14" fill="none" stroke-linecap="round"/>
+          </g>
+        </svg>
+      </div>
+      <div class="section-content glass-card">
+        <h2 class="section-title">Hug Day 🤗</h2>
+        <p class="section-message">Jab bhi tum gale lagogi, lagta hai duniya theek hai. Tumhari baahon mein ek aisa sukoon hai jo kahin nahi milta. Main chahta hoon ki tum hamesha feel karo – yahan safe ho, yahan tumhari jagah hai. Happy Hug Day. Ab gale laga do na? 🤗💕</p>
+      </div>
+    </section>
+
+    <!-- Section 8: Kiss Day 💋 -->
+    <section class="story-section section-reveal" id="kiss-day" data-section="kiss-day">
+      <div class="section-bg section-soft-blur"></div>
+      <div class="couple-scene kiss-scene">
+        <svg class="scene-svg scene-kiss" viewBox="0 0 280 140" aria-hidden="true">
+          <g class="kiss-couple">
+            <ellipse class="body-boy" cx="90" cy="98" rx="26" ry="36" fill="var(--silhouette-fill)"/>
+            <circle class="head-boy" cx="90" cy="50" r="20" fill="var(--silhouette-fill)"/>
+            <ellipse class="body-girl" cx="190" cy="98" rx="26" ry="36" fill="var(--silhouette-fill)"/>
+            <circle class="head-girl" cx="190" cy="50" r="20" fill="var(--silhouette-fill)"/>
+            <ellipse class="kiss-heart" cx="140" cy="52" rx="18" ry="14" fill="var(--pink-deep)" opacity="0.9"/>
+          </g>
+        </svg>
+      </div>
+      <div class="section-content glass-card">
+        <h2 class="section-title">Kiss Day 💋</h2>
+        <p class="section-message">Tumhari har chhoti si closeness mere liye bahut matlab rakhti hai. Respect ke sath, pyaar ke sath – tum mere sabse kareeb ho. Is din ke liye bas itna: tum mere dil ki raani ho, aur main hamesha tumhe woh ehsaas dilata rahunga. Classy, passionate, aur sirf tumhare liye. Happy Kiss Day, meri jaan. 💋❤️</p>
+      </div>
+    </section>
+
+    <!-- Section 9: Surprise Page (magical) -->
+    <section class="story-section section-reveal section-surprise" id="surprise-page" data-section="surprise-page">
+      <div class="section-bg section-surprise-gradient"></div>
+      <div class="section-bg section-surprise-hearts" id="surprisePageHearts"></div>
+      <div class="section-bg section-surprise-sparkles" id="surpriseSparkles"></div>
+      <div class="section-content glass-card surprise-card">
+        <h2 class="section-title">Ek Chhota Sa Surprise 💌</h2>
+        <div class="surprise-quotes-typing" id="surpriseQuotesTyping"></div>
+        <p class="section-message surprise-main-msg">Tumhare liye yeh page sirf isliye hai ki tum jaan sako – har din tum mere liye ek surprise ho. Tumhe dekh kar lagta hai ki kismat ne mujhe choose kiya. Tumhari har baat, har nazar, har smile – sab kuch yaad rehta hai. Aaj na ho to kal, kal na ho to parso – main hamesha tumhare liye yahin rahunga. Yeh sirf shuruat hai, meri jaan. 💕</p>
+        <p class="surprise-deep">Tum socho ki tum koi normal ladki ho – par mere liye tum poora universe ho. Har problem ka solution tumhare paas aake lagta hai. Tumhe kabhi bata nahi paata kitna pyaar hai – isliye yeh sab likh kar rakh raha hoon. Padh lo jab man kare. Main hamesha tumhara rahunga. ❤️</p>
+        <div class="surprise-final-reveal" id="surpriseFinalReveal">
+          <p class="surprise-big-text">Tum Mere Ho 💖</p>
+        </div>
+        <div class="surprise-popup" id="surprisePopup">
+          <p>You're the best thing that ever happened to me! 💕</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 10: Valentine Day (grand finale) -->
+    <section class="story-section section-reveal section-valentine-final" id="valentine-final" data-section="valentine-final">
+      <div class="section-bg section-heart-rain"></div>
+      <div class="section-bg section-gold-confetti"></div>
+      <div class="section-bg section-final-glow"></div>
+      <div class="section-content glass-card valentine-final-card">
+        <h2 class="section-title">Valentine Day ❤️</h2>
+        <p class="final-intro">Tumhare liye – 100 chhote dil ke message.</p>
+        <div class="valentine-messages" id="valentineMessages"></div>
+      </div>
+    </section>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
